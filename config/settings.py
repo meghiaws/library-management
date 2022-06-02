@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "djoser",
     "library",
+    "accounts"
 ]
 
 REST_FRAMEWORK = {
@@ -48,6 +49,10 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
 }
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -56,6 +61,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware"
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -103,6 +109,8 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+AUTH_USER_MODEL = "accounts.User"
 
 LANGUAGE_CODE = "en-us"
 
