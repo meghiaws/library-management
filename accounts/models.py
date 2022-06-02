@@ -8,3 +8,17 @@ class User(AbstractUser):
 
     def __str__(self):
         return f"{self.username}, {self.email}"
+
+
+class Librarian(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return f"Librarian: {self.user.username}"
+
+
+class Member(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Member: {self.user.username}"
