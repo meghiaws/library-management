@@ -1,0 +1,3 @@
+CREATE USER library;
+CREATE DATABASE library;
+GRANT ALL PRIVILEGES ON DATABASE library TO library;

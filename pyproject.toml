@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "library-managment"
+version = "0.1.0"
+description = ""
+authors = ["Mahdi Ghiasi <mahdiw.ghiasi@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+Django = "3.2.13"
+djangorestframework = "^3.13.1"
+django-environ = "^0.8.1"
+psycopg2 = "^2.9.3"
+drf-spectacular = "^0.22.1"
+djoser = "^2.1.0"
+
+[tool.poetry.dev-dependencies]
+black = "^22.3.0"
+django-debug-toolbar = "^3.4.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
