@@ -27,7 +27,7 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "djoser",
     "library",
-    "accounts"
+    "core"
 ]
 
 REST_FRAMEWORK = {
@@ -110,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = "accounts.User"
+AUTH_USER_MODEL = "core.User"
 
 LANGUAGE_CODE = "en-us"
 
