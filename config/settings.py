@@ -37,6 +37,10 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
+SIMPLE_JWT = {
+   'AUTH_HEADER_TYPES': ('JWT',),
+}
+
 SPECTACULAR_SETTINGS = {
     "TITLE": "Library Management System",
     "DESCRIPTION": "This is API documentation for library management system.",
@@ -47,6 +51,17 @@ SPECTACULAR_SETTINGS = {
 SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("JWT",),
     "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
+}
+
+DJOSER = {
+    "PERMISSIONS": {
+        "user_create": ["rest_framework.permissions.IsAdminUser"],
+    },
+    "SERIALIZERS": {
+        "user_create": "core.serializers.UserCreateSerializer",
+        "current_user": "core.serializers.UserSerializer",
+        "user_delete": "core.serializers.UserDeleteSerializer",
+    },
 }
 
 INTERNAL_IPS = [
