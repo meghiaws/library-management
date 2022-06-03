@@ -1,7 +1,23 @@
 from datetime import date
 from django.db import models
+from django.conf import settings
 from django.core.validators import MinValueValidator
-from core.models import Member
+
+
+class Librarian(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    staff_code = models.CharField(max_length=8)
+
+    def __str__(self):
+        return f"Librarian: {self.user.username}"
+
+
+class Member(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    membership_code = models.CharField(max_length=8)
+
+    def __str__(self):
+        return f"Member: {self.user.username}"
 
 
 class Author(models.Model):
