@@ -1,8 +1,6 @@
+from datetime import date
 from django.db import models
-from django.utils import timezone
-from datetime import date, datetime, timedelta
-
-
+from django.core.validators import MinValueValidator
 from core.models import Member
 
 
@@ -50,7 +48,7 @@ class BorrowedBook(models.Model):
     book_item = models.OneToOneField(BookItem, on_delete=models.CASCADE)
     borrower = models.OneToOneField(Member, on_delete=models.CASCADE)
     borrowed_date = models.DateField(auto_now_add=True)
-    due_date = models.DateField()
+    due_date = models.DateField(validators=[MinValueValidator(date.today)])
 
     def __str__(self):
         return (
