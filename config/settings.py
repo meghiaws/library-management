@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "core",
     "accounts",
     "library",
+    "borrowing",
 ]
 
 REST_FRAMEWORK = {
