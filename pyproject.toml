@@ -12,7 +12,8 @@ djangorestframework = "^3.13.1"
 django-environ = "^0.8.1"
 psycopg2 = "^2.9.3"
 drf-spectacular = "^0.22.1"
-djoser = "^2.1.0"
+dj-rest-auth = "^2.2.4"
+djangorestframework-simplejwt = "^5.2.0"
 
 [tool.poetry.dev-dependencies]
 black = "^22.3.0"
