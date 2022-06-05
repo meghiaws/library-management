@@ -8,6 +8,7 @@ from drf_spectacular.views import (
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("auth/", include("dj_rest_auth.urls")),
     path("library/", include("library.urls")),
     path("accounts/", include("accounts.urls")),
     path("__debug__/", include("debug_toolbar.urls")),

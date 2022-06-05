@@ -23,22 +23,33 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "dj_rest_auth",
     "debug_toolbar",
     "drf_spectacular",
-    "djoser",
+    "core",
+    "accounts",
     "library",
-    "core"
 ]
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "dj_rest_auth.jwt_auth.JWTCookieAuthentication",
     ),
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
+SITE_ID = 1
+
+REST_USE_JWT = True
+
+REST_AUTH_TOKEN_MODEL = None
+
+JWT_AUTH_COOKIE = "library-auth"
+
+JWT_AUTH_REFRESH_COOKIE = "library-refresh-token"
+
 SIMPLE_JWT = {
-   'AUTH_HEADER_TYPES': ('JWT',),
+    "AUTH_HEADER_TYPES": ("JWT",),
 }
 
 SPECTACULAR_SETTINGS = {
@@ -53,17 +64,6 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
 }
 
-DJOSER = {
-    "PERMISSIONS": {
-        "user_create": ["rest_framework.permissions.IsAdminUser"],
-    },
-    "SERIALIZERS": {
-        "user_create": "core.serializers.UserCreateSerializer",
-        "current_user": "core.serializers.UserSerializer",
-        "user_delete": "core.serializers.UserDeleteSerializer",
-    },
-}
-
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
@@ -76,7 +76,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "debug_toolbar.middleware.DebugToolbarMiddleware"
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
