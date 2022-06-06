@@ -1,6 +1,4 @@
-from cgitb import lookup
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
 from rest_framework_nested.routers import DefaultRouter, NestedDefaultRouter
 
 from .views import BookViewset, AuthorViewset, BookItemViewSet
