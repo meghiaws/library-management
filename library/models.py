@@ -37,6 +37,9 @@ class BookItem(models.Model):
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
     publication_date = models.DateField()
 
+    def is_available(self):
+        return self.status == self.STATUS_AVAILABLE
+
     def change_status(self, to: str):
         self.status = to
         self.save(update_fields=["status"])
