@@ -31,7 +31,7 @@ class BookItem(models.Model):
 
     STATUS_CHOICES = (
         (STATUS_AVAILABLE, "Available"),
-        (STATUS_BORROW, "Borrow"),
+        (STATUS_BORROW, "Borrowed"),
         (STATUS_RESERVED, "Reserved"),
         (STATUS_LOST, "Lost"),
     )
