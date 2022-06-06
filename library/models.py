@@ -1,7 +1,4 @@
-from datetime import date
 from django.db import models
-from django.conf import settings
-from django.core.validators import MinValueValidator
 
 
 class Author(models.Model):
@@ -25,13 +22,13 @@ class Book(models.Model):
 
 class BookItem(models.Model):
     STATUS_AVAILABLE = "A"
-    STATUS_BORROW = "B"
+    STATUS_BORROWED = "B"
     STATUS_RESERVED = "R"
     STATUS_LOST = "L"
 
     STATUS_CHOICES = (
         (STATUS_AVAILABLE, "Available"),
-        (STATUS_BORROW, "Borrowed"),
+        (STATUS_BORROWED, "Borrowed"),
         (STATUS_RESERVED, "Reserved"),
         (STATUS_LOST, "Lost"),
     )
@@ -39,6 +36,10 @@ class BookItem(models.Model):
     barcode = models.CharField(max_length=15, unique=True)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
     publication_date = models.DateField()
+
+    def change_status(self, to: str):
+        self.status = to
+        self.save(update_fields=["status"])
 
     def __str__(self):
         return f"BookItem: {self.book.title}"
