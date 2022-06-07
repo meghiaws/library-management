@@ -15,6 +15,8 @@ drf-spectacular = "^0.22.1"
 dj-rest-auth = "^2.2.4"
 djangorestframework-simplejwt = "^5.2.0"
 drf-nested-routers = "^0.93.4"
+redis = "^4.3.3"
+celery = "^5.2.7"
 
 [tool.poetry.dev-dependencies]
 black = "^22.3.0"

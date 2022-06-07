@@ -38,6 +38,16 @@ services:
     ports:
       - "5050:80"
     
+  redis:
+    image: redis:6.2.7-alpine
+    ports:
+      - "6379:6379"
+    restart: always
+    volumes:
+      - redisdata:/data
+
+
 volumes:
   postgress_data:
   pgadmin:
+  redisdata:
