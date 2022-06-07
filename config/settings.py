@@ -30,7 +30,8 @@ INSTALLED_APPS = [
     "accounts",
     "library",
     "borrowing",
-    "reservation"
+    "reservation",
+    "fines"
 ]
 
 REST_FRAMEWORK = {
