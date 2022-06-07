@@ -1,5 +1,6 @@
 from pathlib import Path
 from datetime import timedelta
+from celery.schedules import crontab
 import environ
 
 
@@ -151,3 +152,10 @@ MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CELERY_BROKER_URL = "redis://localhost:6379/1"
+
+CELERY_BEAT_SCHEDULE = {
+    "create_fines": {
+        "task": "fines.tasks.create_fines",
+        "schedule": crontab(hour=0, minute=10)
+    }
+}
