@@ -2,6 +2,16 @@ version: "3.8"
 
 services:
   
+  web:
+    build: .
+    command: ./docker-entrypoint.sh
+    ports:
+      - "8000:8000"
+    env_file: envs/.env.prod
+    restart: on-failure
+    volumes:
+      - .:/home/app/web
+
   db:
     build:
       context: .
@@ -9,7 +19,7 @@ services:
     volumes:
       - postgress_data:/var/lib/postgersql/data
     restart: always
-    env_file: envs/.env
+    env_file: envs/.env.prod
     ports:
       - "5432:5432"
       
