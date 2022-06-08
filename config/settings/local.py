@@ -10,6 +10,8 @@ SECRET_KEY = env.str("SECRET_KEY")
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
+INSTALLED_APPS += ["debug_toolbar"]
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
