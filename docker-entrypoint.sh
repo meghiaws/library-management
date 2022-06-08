@@ -2,8 +2,11 @@
 
 # Apply database migrations
 echo "Apply database migrations"
-python manage.py migrate
+python manage.py migrate --noinput
+
+# Collect all static files
+python manage.py collectstatic --noinput
 
 # Start server
 echo "Starting server"
-python manage.py runserver 0.0.0.0:8000
+gunicorn config.wsgi:application --bind 0.0.0.0:8000
