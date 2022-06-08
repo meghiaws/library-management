@@ -6,6 +6,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR ${WORKDIR}
 
+RUN mkdir ${WORKDIR}/staticfiles
+
 RUN apt-get update \
     && apt-get -y install libpq-dev gcc 
 
