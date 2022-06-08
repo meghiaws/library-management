@@ -4,24 +4,23 @@ services:
   
   web:
     build: .
-    command: ./docker-entrypoint.sh
+    command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
-    env_file: .envs/.env.prod
+    env_file: .envs/.env
     depends_on:
       - db
+      - redis
     restart: on-failure
     volumes:
-      - .:/home/app/web
+      - .:/home/appuser/web
 
   db:
-    build:
-      context: .
-      dockerfile: db.Dockerfile
+    image: postgres:13.7
     volumes:
       - postgress_data:/var/lib/postgresql/data
     restart: always
-    env_file: .envs/.env.prod
+    env_file: .envs/.env
     ports:
       - "5432:5432"
       
@@ -47,6 +46,24 @@ services:
     restart: always
     volumes:
       - redisdata:/data
+
+  celery:
+    build: .
+    command: celery -A config worker --loglevel=info
+    depends_on:
+      - redis
+    env_file: .envs/.env
+    volumes:
+      - .:/home/appuser/web
+
+  celery-beat:
+    build: .
+    command: celery -A config beat --loglevel=info
+    depends_on:
+      - redis
+    env_file: .envs/.env
+    volumes:
+      - .:/home/appuser/web
 
 volumes:
   postgress_data:
