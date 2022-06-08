@@ -7,7 +7,7 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
-    env_file: .envs/.env
+    env_file: .envs/.env.dev
     depends_on:
       - db
       - redis
@@ -20,7 +20,7 @@ services:
     volumes:
       - postgress_data:/var/lib/postgresql/data
     restart: always
-    env_file: .envs/.env
+    env_file: .envs/.env.dev
     ports:
       - "5432:5432"
       
@@ -52,7 +52,7 @@ services:
     command: celery -A config worker --loglevel=info
     depends_on:
       - redis
-    env_file: .envs/.env
+    env_file: .envs/.env.dev
     volumes:
       - .:/home/appuser/web
 
@@ -61,7 +61,7 @@ services:
     command: celery -A config beat --loglevel=info
     depends_on:
       - redis
-    env_file: .envs/.env
+    env_file: .envs/.env.dev
     volumes:
       - .:/home/appuser/web
 
