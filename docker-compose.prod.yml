@@ -1,0 +1,73 @@
+version: "3.8"
+
+services:
+  
+  web:
+    build: .
+    command: ./docker-entrypoint.sh
+    ports:
+      - "8000:8000"
+    env_file: .envs/.env.prod
+    depends_on:
+      - db
+      - redis
+    restart: on-failure
+    volumes:
+      - static_volume:/home/appuser/web/staticfiles
+
+  db:
+    image: postgres:13.7
+    volumes:
+      - postgress_data:/var/lib/postgresql/data
+    restart: always
+    env_file: .envs/.env.prod
+    ports:
+      - "5432:5432"
+      
+  pgadmin:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: 123456789
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    depends_on:
+      - db
+    ports:
+      - "5050:80"
+    
+  redis:
+    image: redis:6.2.7-alpine
+    ports:
+      - "6379:6379"
+    restart: always
+    volumes:
+      - redisdata:/data
+
+  celery:
+    build: .
+    command: celery -A config worker --loglevel=info
+    depends_on:
+      - redis
+    env_file: .envs/.env.prod
+    volumes:
+      - .:/home/appuser/web
+
+  celery-beat:
+    build: .
+    command: celery -A config beat --loglevel=info
+    depends_on:
+      - redis
+      - celery
+    env_file: .envs/.env.prod
+    volumes:
+      - .:/home/appuser/web
+
+volumes:
+  postgress_data:
+  static_volume:
+  pgadmin:
+  redisdata:
