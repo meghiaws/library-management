@@ -7,7 +7,9 @@ services:
     command: ./docker-entrypoint.sh
     ports:
       - "8000:8000"
-    env_file: envs/.env.prod
+    env_file: .envs/.env.prod
+    depends_on:
+      - db
     restart: on-failure
     volumes:
       - .:/home/app/web
@@ -17,9 +19,9 @@ services:
       context: .
       dockerfile: db.Dockerfile
     volumes:
-      - postgress_data:/var/lib/postgersql/data
+      - postgress_data:/var/lib/postgresql/data
     restart: always
-    env_file: envs/.env.prod
+    env_file: .envs/.env.prod
     ports:
       - "5432:5432"
       
@@ -45,7 +47,6 @@ services:
     restart: always
     volumes:
       - redisdata:/data
-
 
 volumes:
   postgress_data:
