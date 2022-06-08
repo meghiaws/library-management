@@ -1,6 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 
 from ..models import Book, BookItem, Author
+from .filters import AuthorFilter, BookFilter, BookItemFilter
 from .serializers import (
     BookSerializer,
     BookCreateUpdateSerializer,
@@ -13,6 +14,7 @@ from .serializers import (
 
 class BookViewset(ModelViewSet):
     queryset = Book.objects.prefetch_related("author").all()
+    filterset_class = BookFilter
 
     def get_serializer_class(self):
         if self.action in ("create", "update", "partial_update"):
@@ -21,6 +23,8 @@ class BookViewset(ModelViewSet):
 
 
 class AuthorViewset(ModelViewSet):
+    filterset_class = AuthorFilter
+
     def get_queryset(self):
         if self.action == "list":
             Author.objects.prefetch_related("books").all()
@@ -33,6 +37,8 @@ class AuthorViewset(ModelViewSet):
 
 
 class BookItemViewSet(ModelViewSet):
+    filterset_class = BookItemFilter
+
     def get_queryset(self):
         return (
             BookItem.objects
