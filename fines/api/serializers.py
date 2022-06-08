@@ -1,10 +1,10 @@
 from rest_framework import serializers
 
-from accounts.serializers import MemberSerializer
-from borrowing.serializers import BorrowedBookSerializer
+from accounts.api.serializers import MemberSerializer
+from borrowing.api.serializers import BorrowedBookSerializer
 
 from library.models import BookItem
-from .models import Fine
+from ..models import Fine
 
 
 class BookItemSerializer(serializers.ModelSerializer):

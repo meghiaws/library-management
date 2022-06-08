@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework_nested.routers import DefaultRouter, NestedDefaultRouter
 
-from .views import BookViewset, AuthorViewset, BookItemViewSet
+from .api.views import BookViewset, AuthorViewset, BookItemViewSet
 
 
 router = DefaultRouter()

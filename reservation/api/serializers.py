@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from library.models import BookItem
-from .models import ReservedBook
+from ..models import ReservedBook
 
 
 class BookItemSerializer(serializers.ModelSerializer):

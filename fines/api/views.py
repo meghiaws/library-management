@@ -1,8 +1,8 @@
 from rest_framework.viewsets import GenericViewSet
 from rest_framework import mixins
 
-from accounts.permissions import IsAdminOrLibrarian
-from .models import Fine
+from accounts.api.permissions import IsAdminOrLibrarian
+from ..models import Fine
 from .serializers import FineSerializer
 
 

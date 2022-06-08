@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework.serializers import ModelSerializer
 
-from .models import Librarian, Member
+from ..models import Librarian, Member
 
 
 class UserSerializer(ModelSerializer):

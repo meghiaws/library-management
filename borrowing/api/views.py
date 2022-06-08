@@ -1,9 +1,8 @@
 from rest_framework.viewsets import GenericViewSet
 from rest_framework import mixins
 
-from accounts.permissions import IsAdminOrLibrarian
-from library.models import BookItem
-from .models import BorrowedBook
+from accounts.api.permissions import IsAdminOrLibrarian
+from ..models import BorrowedBook
 from .serializers import BorrowedBookSerializer, BorrowedBookCreateSerializer
 
 

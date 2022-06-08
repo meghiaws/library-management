@@ -1,9 +1,9 @@
 from rest_framework.viewsets import GenericViewSet
 from rest_framework import mixins
 
-from accounts.permissions import IsAdminOrLibrarian
+from accounts.api.permissions import IsAdminOrLibrarian
 
-from .models import ReservedBook
+from ..models import ReservedBook
 from .serializers import ReservedBookSerializer, ReservedBookCreateSerializer
 
 

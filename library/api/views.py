@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
 
-from .models import Book, BookItem, Author
+from ..models import Book, BookItem, Author
 from .serializers import (
     BookSerializer,
     BookCreateUpdateSerializer,
@@ -45,3 +45,6 @@ class BookItemViewSet(ModelViewSet):
         if self.action in ("create", "update", "partial_update"):
             return BookItemCreateUpdateSerializer
         return BookItemSerializer
+
+    def get_serializer_context(self):
+        return {"book_id": self.kwargs["book_pk"]}
