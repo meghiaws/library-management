@@ -1,19 +1,9 @@
 from pathlib import Path
 from datetime import timedelta
 from celery.schedules import crontab
-import environ
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-env = environ.Env()
-env.read_env(BASE_DIR / "envs/.env")
-
-SECRET_KEY = env.str("SECRET_KEY")
-
-DEBUG = env.bool("DEBUG")
-
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 INSTALLED_APPS = [
@@ -26,6 +16,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "dj_rest_auth",
     "debug_toolbar",
+    # "corsheaders",
     "drf_spectacular",
     "core",
     "accounts",
@@ -73,7 +64,9 @@ INTERNAL_IPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -103,16 +96,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": env("DB_NAME"),
-        "USER": env("DB_USER"),
-        "PASSWORD": env("DB_PASSWORD"),
-        "HOST": env("DB_HOST", default="localhost"),
-        "PORT": env("DB_PORT"),
-    }
-}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -150,8 +133,6 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-CELERY_BROKER_URL = "redis://localhost:6379/1"
 
 CELERY_BEAT_SCHEDULE = {
     "create_fines": {
