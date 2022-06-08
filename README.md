@@ -16,15 +16,15 @@ This is a RESTful library managment system build with Django and Django REST Fra
 - ✅ Cloud-native design using 12-factor methodology
 
 ## Technologies used
-- 🛠 [Python](https://www.python.org/) - Programming Language
-- 🛠 [Django](https://docs.djangoproject.com/en/3.2/releases/3.2/) - Web Framework
-- 🛠 [Django Rest Framework](https://www.django-rest-framework.org/) - For Building RESTful APIs
-- 🛠 [Docker](https://www.docker.com/) - Container Platform
-- 🛠 [PostgreSQL](https://www.postgresql.org/) - Database
-- 🛠 [Git](https://git-scm.com/doc) - Version Control System
-- 🛠 [Gunicorn](https://gunicorn.org/) - WSGI HTTP Server
-- 🛠 [Celery](https://github.com/celery/celery) - Task Queue
-- 🛠 [Celery Beat](https://github.com/celery/django-celery-beat) - Task Scheduler (for scheduling fines)
+- ⚙️ [Python](https://www.python.org/) - Programming Language
+- ⚙️ [Django](https://docs.djangoproject.com/en/3.2/releases/3.2/) - Web Framework
+- ⚙️ [Django Rest Framework](https://www.django-rest-framework.org/) - For Building RESTful APIs
+- ⚙️ [Docker](https://www.docker.com/) - Container Platform
+- ⚙️ [PostgreSQL](https://www.postgresql.org/) - Database
+- ⚙️ [Git](https://git-scm.com/doc) - Version Control System
+- ⚙️ [Gunicorn](https://gunicorn.org/) - WSGI HTTP Server
+- ⚙️ [Celery](https://github.com/celery/celery) - Task Queue
+- ⚙️ [Celery Beat](https://github.com/celery/django-celery-beat) - Task Scheduler (for scheduling fines)
 
 ## Installation
 Clone the project
@@ -32,7 +32,7 @@ Clone the project
 git clone https://github.com/meghiaws/library-management.git
 ```
 
-⚙️ Note that there are three environment files:
+📄 Note that there are three environment files:
 - `.env`: for developing locally
 - `.env.dev`: for developing locally but inside docker container
 - `.env.prod`: for production 
