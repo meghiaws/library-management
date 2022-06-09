@@ -1,8 +1,9 @@
-# Library Managment System 
+# Library Managment System
 
 This is a RESTful library managment system build with Django and Django REST Framework.
 
 ## Features
+
 - ✅ Authentication with email using JWT
 - ✅ Adding new Authors and Books to library by librarians and admins
 - ✅ Viewing books by members and add their availability
@@ -16,6 +17,7 @@ This is a RESTful library managment system build with Django and Django REST Fra
 - ✅ Cloud-native design using 12-factor methodology
 
 ## Technologies used
+
 - ✨ [Python](https://www.python.org/) - Programming Language
 - ✨ [Django](https://docs.djangoproject.com/en/3.2/releases/3.2/) - Web Framework
 - ✨ [Django Rest Framework](https://www.django-rest-framework.org/) - For Building RESTful APIs
@@ -27,23 +29,29 @@ This is a RESTful library managment system build with Django and Django REST Fra
 - ✨ [Celery Beat](https://github.com/celery/django-celery-beat) - Task Scheduler (for scheduling fines)
 
 ## Installation
+
 Clone the project
-``` 
+
+``` git
 git clone https://github.com/meghiaws/library-management.git
 ```
 
 📄 Note that there are three environment files:
+
 - `.env`: for developing locally
 - `.env.dev`: for developing locally but inside docker container
-- `.env.prod`: for production 
+- `.env.prod`: for production purposes
 
-⚠️ Remove `.sample` postfix after all of them and considering your development environment (local or inside docker) change `env_file` field ind `docker-compose.yml`
+⚠️ Remove `.sample` postfix after all of them and considering your development environment (local or inside docker) change `env_file` field in `docker-compose.yml`
 
 Now you can run the project
-```
+
+```docker
 docker-compose up -d --build
 ```
+
 You currently have 7 containers running
+
 - web
 - db
 - pgadmin
@@ -53,14 +61,18 @@ You currently have 7 containers running
 
 You access to app from `http://0.0.0.0:8000` and access to pdadmin from `http://0.0.0.0:5050`
 
-## API Documantaion
+## API Documentations
+
 You can also access to all of the endpoints with OpenAPI schemas
 
 Using Swagger UI
-```
+
+```text
 http://0.0.0.0:8000/api/docs
-``` 
-Using Redoc
 ```
+
+Using Redoc
+
+```text
 http://0.0.0.0:8000/api/redoc
 ```
