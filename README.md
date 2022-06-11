@@ -16,11 +16,22 @@ This is a RESTful library managment system build with Django and Django REST Fra
 - ✅ Modular Design
 - ✅ Cloud-native design using 12-factor methodology
 
+## Apps
+
+There are 6 django apps in this project
+
+- 🔋 `core`: Abstract features that have been used in whole project
+- 🔋 `accounts`: Responsible for authentication and registering members and librarians
+- 🔋 `library`: Saving, retrieving and filtering books and authors
+- 🔋 `borrowing`: Responsible to borrow books to members and save their records
+- 🔋 `reservation`: Used for reserve books by members and save their records
+- 🔋 `fines`: Responsible for automatically checking borrowed book records and fine members who haven't return their books at time
+
 ## Technologies used
 
 - ✨ [Python](https://www.python.org/) - Programming Language
 - ✨ [Django](https://docs.djangoproject.com/en/3.2/releases/3.2/) - Web Framework
-- ✨ [Django Rest Framework](https://www.django-rest-framework.org/) - For Building RESTful APIs
+- ✨ [Django REST Framework](https://www.django-rest-framework.org/) - For Building RESTful APIs
 - ✨ [Docker](https://www.docker.com/) - Container Platform
 - ✨ [PostgreSQL](https://www.postgresql.org/) - Database
 - ✨ [Git](https://git-scm.com/doc) - Version Control System
