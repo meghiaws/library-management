@@ -23,21 +23,6 @@ services:
     env_file: .envs/.env.prod
     ports:
       - "5432:5432"
-      
-  pgadmin:
-    container_name: pgadmin4
-    image: dpage/pgadmin4
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: 123456789
-      PGADMIN_CONFIG_SERVER_MODE: "False"
-    volumes:
-      - pgadmin:/var/lib/pgadmin
-    depends_on:
-      - db
-    ports:
-      - "5050:80"
     
   redis:
     image: redis:6.2.7-alpine
@@ -69,5 +54,4 @@ services:
 volumes:
   postgress_data:
   static_volume:
-  pgadmin:
   redisdata:
