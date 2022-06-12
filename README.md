@@ -61,7 +61,7 @@ Now you can run the project
 docker-compose up -d --build
 ```
 
-You currently have 7 containers running
+You currently have 7 containers running (production docker-compose is not including pgadmin)
 
 - web
 - db
