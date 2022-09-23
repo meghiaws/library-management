@@ -70,7 +70,7 @@ You currently have 7 containers running (production docker-compose is not includ
 - celery
 - celery-beat
 
-You access to app from `http://0.0.0.0:8000` and access to pdadmin from `http://0.0.0.0:5050`
+You can access to app from `http://0.0.0.0:8000` and access to pdadmin from `http://0.0.0.0:5050`
 
 ## API Documentations
 
