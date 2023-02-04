@@ -1,6 +1,6 @@
-# Library Managment System
+# Library Management System
 
-This is a RESTful library managment system build with Django and Django REST Framework.
+This is a RESTful library management system build with Django and Django REST Framework.
 
 ## Features
 
