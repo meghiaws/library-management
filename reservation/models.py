@@ -11,5 +11,5 @@ class ReservedBook(models.Model):
 
     def __str__(self):
         return (
-            f"{self.book_item.book.title} reserved from {self.borrower.user.username}"
+            f"{self.id}"
         )
