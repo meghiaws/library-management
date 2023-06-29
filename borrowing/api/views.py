@@ -14,7 +14,7 @@ class BorrowedBookViewset(
     GenericViewSet,
 ):
     queryset = BorrowedBook.objects.select_related("book_item").all()
-    permission_classes = [IsAdminOrLibrarian]
+    # permission_classes = [IsAdminOrLibrarian]
 
     def get_serializer_class(self):
         if self.action in ("create"):
